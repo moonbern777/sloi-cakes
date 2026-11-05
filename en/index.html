@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sloi custom cakes</title>
+<meta name="description" content="A home bakery. Build your cake on the site: flavor, tiers, decoration and message. You see the price right away. Order at least three days ahead.">
+<link rel="canonical" href="https://moonbern777.github.io/sloi-cakes/en/">
+<meta name="theme-color" content="#c9134f">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Sloi Cakes">
+<meta property="og:url" content="https://moonbern777.github.io/sloi-cakes/en/">
+<meta property="og:title" content="A cake where every layer counts">
+<meta property="og:description" content="Build your cake on the site: flavor, tiers, decoration and message. You see the price right away.">
+<link rel="preload" href="../fonts/noto-serif-display-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/onest-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+<script>
+  // Animated states only apply once the scripts have promised to run them.
+  document.documentElement.classList.add('js');
+  setTimeout(function () {
+    if (!window.sloiReady) document.documentElement.classList.remove('js');
+  }, 4000);
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="header">
+  <a class="logo" href="#top" aria-label="Sloi, home page">sloi<span>.</span></a>
+  <nav class="nav" id="nav" aria-label="Site sections">
+    <a href="#inside">What’s inside</a>
+    <a href="#build">Build a cake</a>
+    <a href="#hits">Favorites</a>
+    <a href="#how">How to order</a>
+    <a href="#faq">Questions</a>
+  </nav>
+  <a class="btn btn-small btn-light header-cta" href="#build"><span>Build a cake</span></a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu"><i></i><i></i></button>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top" data-layer="frosting">
+    <div class="hero-stage" id="hero-stage">
+      <canvas class="sprinkles" id="sprinkles" aria-hidden="true"></canvas>
+
+      <div class="hero-cake" id="hero-cake" role="img" aria-label="Two-tier cake cut in half, with berries and dripping glaze"></div>
+
+      <div class="hero-copy">
+        <h1 class="hero-title" data-hero-title>A cake where <em>every layer counts</em></h1>
+        <p class="hero-lead">Nastya’s home bakery. Choose a flavor, tiers and decoration on the site. The cake comes together before your eyes, and you see the price right away.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#build" data-jelly><span>Build your cake</span></a>
+          <a class="link" href="#hits">See the favorites</a>
+        </div>
+        <ul class="hero-facts">
+          <li>Cream and butter, no margarine</li>
+          <li>Order 3 days ahead</li>
+          <li>Delivery across town</li>
+        </ul>
+      </div>
+
+      <svg class="glaze" id="glaze" aria-hidden="true">
+        <defs>
+          <linearGradient id="glaze-color" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#d4175a"/>
+            <stop offset="1" stop-color="#c9134f"/>
+          </linearGradient>
+        </defs>
+        <path id="glaze-fill" fill="url(#glaze-color)"/>
+        <path id="glaze-shine" fill="none" stroke="#fff" stroke-opacity=".34" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <section class="inside" id="inside" data-layer="confit" aria-labelledby="inside-title">
+    <h2 id="inside-title" data-lines>Let’s take the cake apart, layer by layer</h2>
+    <p data-fade>Scroll down: this is vanilla and raspberry, laid out piece by piece. Every cake looks like this before it’s put together.</p>
+  </section>
+
+  <section class="strata" id="strata" aria-label="Layers of a vanilla and raspberry cake">
+    <div class="strata-stage">
+      <div class="band band-cheese" data-edge data-band><h3>Cream cheese</h3><p>Cream cheese and real cream</p></div>
+      <div class="band band-sponge" data-edge data-band data-tex="sponge"><h3>Vanilla sponge</h3><p>Baked the day before assembly</p></div>
+      <div class="band band-confit" data-edge data-band data-tex="confit"><h3>Raspberry confit</h3><p>Just berries and a little sugar</p></div>
+      <div class="band band-cream" data-edge data-band data-tex="vanilla"><h3>Vanilla cream</h3><p>Made with vanilla beans, not flavoring</p></div>
+      <div class="band band-streusel" data-edge data-band data-tex="streusel"><h3>Almond streusel</h3><p>Still crunchy on day three</p></div>
+      <div class="band band-base" data-edge data-band data-tex="sponge"><h3>Base</h3><p>Sponge made with almond flour</p></div>
+    </div>
+  </section>
+
+  <section class="build" id="build" data-layer="pistachio" data-edge aria-labelledby="build-title">
+    <h2 id="build-title" data-lines>Build your own cake</h2>
+
+    <form class="builder" id="cake-form">
+      <div class="stage">
+        <div class="preview" id="preview" role="img" aria-label="Cake preview"></div>
+        <div class="stage-foot">
+          <dl class="tally">
+            <div><dt>weight</dt><dd id="t-weight"></dd></div>
+            <div><dt>diameter</dt><dd id="t-size"></dd></div>
+            <div><dt>deposit</dt><dd id="t-prepay"></dd></div>
+          </dl>
+          <div class="price-row">
+            <output class="total" id="total"></output>
+            <button class="btn" type="button" id="open-order" data-jelly><span>Order this cake</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <fieldset>
+          <legend>Flavor</legend>
+          <div class="flavors" id="flavors"></div>
+        </fieldset>
+
+        <div class="guests">
+          <div class="guests-top">
+            <label class="legend" for="guests">Guests</label>
+            <output id="guests-out" for="guests"></output>
+          </div>
+          <input id="guests" name="guests" type="range" min="6" max="40" step="2" value="12">
+        </div>
+
+        <fieldset>
+          <legend>Tiers</legend>
+          <div class="tiers">
+            <label class="tier-opt"><input type="radio" name="tiers" value="1" checked><span><b>1</b><small>up to 24 guests</small></span></label>
+            <label class="tier-opt"><input type="radio" name="tiers" value="2"><span><b>2</b><small>12+ guests</small></span></label>
+            <label class="tier-opt"><input type="radio" name="tiers" value="3"><span><b>3</b><small>20+ guests</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Decoration</legend>
+          <div class="decor" id="decor"></div>
+        </fieldset>
+
+        <div class="message">
+          <label class="legend" for="cake-text">Message on the topper</label>
+          <input class="text-in" id="cake-text" name="text" maxlength="18" placeholder="Happy Birthday!" autocomplete="off">
+        </div>
+      </div>
+    </form>
+    <noscript><p class="noscript-note">The cake builder needs JavaScript. Message Nastya on WhatsApp and she’ll build the cake with you.</p></noscript>
+  </section>
+
+  <section class="hits" id="hits" data-layer="frosting" data-edge aria-labelledby="hits-title">
+    <h2 id="hits-title" data-lines>Or start with a ready one</h2>
+    <ul class="hit-list" id="hit-list"></ul>
+  </section>
+
+  <section class="baker" data-layer="chocolate" data-edge aria-labelledby="baker-title">
+    <h2 id="baker-title" data-lines>I bake alone, so I only take 6 cakes a week</h2>
+    <div class="baker-note">
+      <p data-fade>I don’t keep anything in the freezer. I bake the sponge the day before assembly, buy berries for each order, and taste every cake before it goes out. If you want something special, message me and we’ll come up with it together.</p>
+      <p class="signed" id="signed">Nastya</p>
+    </div>
+  </section>
+
+  <section class="how" id="how" data-layer="sponge" data-edge data-tex="sponge" aria-labelledby="how-title">
+    <h2 id="how-title" data-lines>Four simple steps</h2>
+    <ol class="steps">
+      <li class="step step-1"><b aria-hidden="true">1</b><div><h3>Build your cake</h3><p>Use the builder, or message me a reference photo on WhatsApp.</p></div></li>
+      <li class="step step-2"><b aria-hidden="true">2</b><div><h3>50% deposit</h3><p>This holds your date. You can cancel for free up to 3 days before.</p></div></li>
+      <li class="step step-3"><b aria-hidden="true">3</b><div><h3>A photo before pickup</h3><p>I’ll send a picture of the finished cake so you can check everything.</p></div></li>
+      <li class="step step-4"><b aria-hidden="true">4</b><div><h3>Pickup or delivery</h3><p>Pick it up yourself, or I’ll bring it across town in a cooler bag for $10.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="reviews" id="reviews" data-layer="frosting" data-edge aria-labelledby="reviews-title">
+    <h2 id="reviews-title" data-lines>After the party</h2>
+    <ul class="quotes">
+      <li class="quote" data-fade><span class="stars" aria-label="5 out of 5">★★★★★</span><blockquote>I ordered this for my daughter’s first birthday. Guests asked for the recipe, and my husband ate the leftovers at night. The best review there is.</blockquote><cite>Julia</cite></li>
+      <li class="quote" data-fade><span class="stars" aria-label="5 out of 5">★★★★★</span><blockquote>Pistachio and strawberry for our wedding. Not too sweet, very soft, and so pretty inside that everyone took photos first.</blockquote><cite>Diana and Arthur</cite></li>
+      <li class="quote" data-fade><span class="stars" aria-label="5 out of 5">★★★★★</span><blockquote>I built a cake on the site in five minutes on my way home from work. The price matched, it came on time, and my wife loved it.</blockquote><cite>Konstantin</cite></li>
+    </ul>
+    <p class="demo-note">This is a demo concept: on a real site, this is where real reviews and cake photos will go.</p>
+  </section>
+
+  <section class="faq" id="faq" data-layer="pistachio" data-edge aria-labelledby="faq-title">
+    <h2 id="faq-title" data-lines>Common questions</h2>
+    <div class="faq-list">
+      <details open><summary>How far ahead should I order?</summary><p>At least 3 days. For weekends and weddings, message me 2–3 weeks ahead, because I only take 6 cakes a week.</p></details>
+      <details><summary>How much cake does each person need?</summary><p>I plan on about 150 grams per guest. The calculator does this for you, and the smallest cake is 1.5 kg.</p></details>
+      <details><summary>How long does a cake keep?</summary><p>Up to 72 hours in the fridge. Before serving, let it sit for 30 minutes at room temperature.</p></details>
+      <details><summary>Can it be nut-free or lactose-free?</summary><p>Almost any flavor can be made without nuts. For other allergies, message me and we’ll adjust the recipe. This is a home kitchen, so I can’t rule out traces of allergens.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="footer" data-layer="chocolate" data-edge>
+  <div class="footer-grid">
+    <div><h3>Where</h3><p>Pickup only<br>from the city center</p></div>
+    <div><h3>Contact</h3><p>+1 000 000 0000</p><a href="https://wa.me/" target="_blank" rel="noopener">WhatsApp</a></div>
+    <div><h3>When</h3><p>I take orders<br>every day 9:00–21:00</p></div>
+  </div>
+  <div class="word" id="word" aria-hidden="true">
+    <span style="--from:0%;--to:22%;--c:#fff3ec">sloi.</span>
+    <span style="--from:22%;--to:40%;--c:#f3cf85">sloi.</span>
+    <span style="--from:40%;--to:54%;--c:#d81e5b">sloi.</span>
+    <span style="--from:54%;--to:68%;--c:#fffaf2">sloi.</span>
+    <span style="--from:68%;--to:84%;--c:#c98a4b">sloi.</span>
+    <span style="--from:84%;--to:100%;--c:#efd08e">sloi.</span>
+  </div>
+  <div class="footer-fine"><span>© 2026 Sloi Bakery</span><span>Demo concept for a portfolio. This bakery is made up.</span></div>
+</footer>
+
+<nav class="actionbar" aria-label="Price and order">
+  <output id="bar-total"></output>
+  <a class="btn btn-small" href="#build"><span>To the builder</span></a>
+</nav>
+
+<dialog class="order-dialog" id="order-dialog" aria-labelledby="order-title">
+  <form class="order" id="order-form">
+    <h3 id="order-title">Order a cake</h3>
+    <p id="order-sum"></p>
+    <div class="field"><label for="o-name">Name</label><input id="o-name" name="name" autocomplete="name" required></div>
+    <div class="field"><label for="o-phone">Phone</label><input id="o-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required minlength="10" placeholder="+1 000 000 0000"></div>
+    <div class="field"><label for="o-date">When do you need the cake?</label><input id="o-date" name="date" type="date" required></div>
+    <div class="field"><label for="o-way">How to get it</label>
+      <select id="o-way" name="way"><option value="pickup">Pickup, free</option><option value="delivery">Delivery across town, $10</option></select>
+    </div>
+    <div class="order-actions">
+      <button class="link" type="button" data-close>Cancel</button>
+      <button class="btn" type="submit"><span>Send to Nastya</span></button>
+    </div>
+  </form>
+  <div class="done" id="order-done" hidden>
+    <h3>Nastya is reading it now</h3>
+    <p id="order-done-text"></p>
+    <p class="done-demo">This is a demo: on a real site, the order goes straight to the baker on WhatsApp.</p>
+    <div class="order-actions"><button class="btn" type="button" data-close><span>Done</span></button></div>
+  </div>
+</dialog>
+
+<script src="../vendor/gsap.min.js" defer></script>
+<script src="../vendor/ScrollTrigger.min.js" defer></script>
+<script src="../vendor/SplitText.min.js" defer></script>
+<script src="../vendor/lenis.min.js" defer></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
